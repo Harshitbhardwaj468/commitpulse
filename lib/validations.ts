@@ -250,6 +250,8 @@ const baseStreakParamsSchema = z.object({
     .string()
     .optional()
     .transform((val) => val === 'true' || val === '1'),
+  // Glow effect — on by default. Accepts 'true'/'1' (true) or 'false' (false).
+  glow: z.string().optional().transform(toBooleanFlag).default(true),
   entrance: z.enum(['rise', 'fade', 'slide', 'none']).catch('rise').default('rise'),
 
   // layout parameter: strictly validated — unsupported values return a 400 Bad Request.
